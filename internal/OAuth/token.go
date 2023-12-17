@@ -1,8 +1,15 @@
 package oauth
 
+import "time"
+
 type OAuthToken struct {
-	AccessToken  string `json:"access_token"`
-	RefreshToken string `json:"refresh_roken"`
-	ExpiresIn    int64  `json:"expires_in"`
-	TokenType    string `json:"token_type"`
+	AccessToken  string
+	RefreshToken string
+	ExpiresIn    int64
+	TokenType    string
+	ExpiresAt    time.Time
+}
+
+func (t OAuthToken) IsExpired() bool {
+	return time.Until(t.ExpiresAt) > 0
 }
