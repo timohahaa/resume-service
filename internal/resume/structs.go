@@ -6,10 +6,22 @@ type Resume struct {
 	BirthDate            string                   `json:"birth_date"`
 	BusinessTripReadines BusinessTripReadinesType `json:"business_trip_readiness"`
 	Citizenship          []Citizenship            `json:"citizenship"`
-	Contact              []Contact                `json:"contact"`
-	//    Education <- TODO
-	Employments []EmploymentType `json:"employments"`
-	Experience  []ExperienceType `json:"experience"`
+	Contacts             []Contact                `json:"contact"`
+	Education            Education                `json:"education"`
+	Employments          []EmploymentType         `json:"employments"`
+	Experience           []ExperienceType         `json:"experience"`
+	FirstName            string                   `json:"first_name"`
+	Gender               Gender                   `json:"gender"`
+	Language             Language                 `json:"language"`
+	LastName             string                   `json:"last_name"`
+	ProfessionalRoles    []ProfessionalRole       `json:"professional_roles"`
+	ResumeLocale         ResumeLocaleType         `json:"resume_locale"`
+	ResumeTitle          string                   `json:"title"`
+	Schedules            []Schedule               `json:"schedules"`
+	Site                 Site                     `json:"site"`
+	SkillSet             []string                 `json:"skill_set"`
+	Skills               string                   `json:"skills"`
+	TravelTime           TravelTimeType           `json:"travel_time"`
 }
 
 type ResumeAccessType struct {
@@ -60,4 +72,66 @@ type ExperienceType struct {
 	Position    string `json:"position"`
 	Start       string `json:"start"`
 	End         string `json:"end"`
+}
+
+type Gender struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type LanguageLevel struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Language struct {
+	Id    string        `json:"id"`
+	Name  string        `json:"name"`
+	Level LanguageLevel `json:"level"`
+}
+
+type ProfessionalRole struct {
+	Id string `json:"id"`
+}
+
+type ResumeLocaleType struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Schedule struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type TravelTimeType struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type SiteType struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Site struct {
+	Type SiteType `json:"type"`
+	URL  string   `json:"url"`
+}
+
+type EducationLevelType struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type PrimaryEducation struct {
+	UniName        string `json:"name"`
+	GraduationYear string `json:"year"`
+	Faculty        string `json:"organization"`
+	Specialty      string `json:"result"`
+}
+
+type Education struct {
+	Level   EducationLevelType `json:"level"`
+	Primary []PrimaryEducation `json:"primary"`
 }
